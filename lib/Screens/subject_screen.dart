@@ -236,7 +236,7 @@ class _SubjectScreenState extends State<SubjectScreen>
                       children:<Widget>
                       [ Container(
                         padding: EdgeInsets.all(20),
-                        height: 150,
+                        height: MediaQuery.of(context).size.height > 700 || MediaQuery.of(context).size.height > 640 ? 135 : 115,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
@@ -247,7 +247,7 @@ class _SubjectScreenState extends State<SubjectScreen>
                               subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' , 
                             ),
                             // alignment: Alignment.topCenter
-                            fit: BoxFit.cover
+                            fit: BoxFit.fill
                           ),
                         ),
                       ),

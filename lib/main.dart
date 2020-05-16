@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart' as dp;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:megabrainv2/Screens/news_screen.dart';
@@ -13,7 +15,8 @@ void main()
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp,DeviceOrientation.portraitDown])
-      .then((_) => runApp(MyApp()));
+      // .then((_) => runApp(dp.DevicePreview(enabled:!kReleaseMode,builder:(context) => MyApp())));
+      .then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget 
@@ -22,6 +25,8 @@ class MyApp extends StatelessWidget
   Widget build(BuildContext context) 
   {
     return MaterialApp(
+      // locale: dp.DevicePreview.of(context).locale,
+      // builder: dp.DevicePreview.appBuilder,
       title: 'MegaBrain ENEM',
       theme: ThemeData(
         primarySwatch: Colors.blue,
