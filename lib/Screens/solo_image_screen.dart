@@ -19,9 +19,8 @@ class _SoloImageScreenState extends State<SoloImageScreen>
 {
   String imgLink;
 
-  setImageLink(dynamic link) async
+  setImageLink(dynamic link)
   {
-    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     imgLink = link;
     Fluttertoast.showToast(msg: 'Click on image to Zoom in or Zoom out.',
     toastLength: Toast.LENGTH_LONG,
@@ -37,7 +36,6 @@ class _SoloImageScreenState extends State<SoloImageScreen>
   {
     super.initState();
     setImageLink(widget.imgLink);
-    
   }
   
   @override

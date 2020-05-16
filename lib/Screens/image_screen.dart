@@ -128,8 +128,6 @@ class _ImageScreenState extends State<ImageScreen>
 
       print(imagesLinkList.first);
 
-      loadLargeImages();
-
 //      Fluttertoast.showToast(msg: 'Remember: Long Tap to Save/Delete Images', toastLength: Toast.LENGTH_LONG);
       Fluttertoast.showToast(msg: 'Click on image to view the image in full screen',
         toastLength: Toast.LENGTH_LONG,
@@ -153,20 +151,6 @@ class _ImageScreenState extends State<ImageScreen>
 //      Fluttertoast.showToast(msg: 'No Images were Found Related to Selected Topic');
       Fluttertoast.showToast(msg: 'Nenhuma imagem disponível!');
 
-    }
-  }
-
-  void loadLargeImages()
-  {
-    if(imagesLinkList.length != 0 && imagesLinkList != null)
-    {
-      for(int i=0; i< imagesLinkList.length ; i++)
-      {
-        if(imagesLinkList[i].openImage == '1')
-        {
-          tempLinksList.add(linkPrefix+imagesLinkList[i].imageName);
-        }
-      }
     }
   }
 

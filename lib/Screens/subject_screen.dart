@@ -91,7 +91,7 @@ class _SubjectScreenState extends State<SubjectScreen>
       borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
       child: Container(
-          height: MediaQuery.of(context).size.height > 700 ? 200 : 100,
+          height: MediaQuery.of(context).size.height > 700 ? 200 : 180,
           width: width,
           decoration: BoxDecoration(
             color: LightColor.purple,
@@ -236,7 +236,7 @@ class _SubjectScreenState extends State<SubjectScreen>
                       children:<Widget>
                       [ Container(
                         padding: EdgeInsets.all(20),
-                        height: MediaQuery.of(context).size.height > 700 ? 150 : 75,
+                        height: 150,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
@@ -269,11 +269,10 @@ class _SubjectScreenState extends State<SubjectScreen>
               borderRadius: BorderRadius.circular(16)
               ),
               width:MediaQuery.of(context).size.width,
-              height:MediaQuery.of(context).size.height > 700 ? 50 : 25,
+              height:50,
               child:InkWell(
                 onTap: ()
                 {
-                  print('hello');
                   Navigator.of(context).push(PageTransition(type: PageTransitionType.fade,alignment: Alignment.center,child:NewsScreen()
                   )
                   );
