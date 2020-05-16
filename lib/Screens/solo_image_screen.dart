@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:store_redirect/store_redirect.dart';
 
@@ -20,6 +21,13 @@ class _SoloImageScreenState extends State<SoloImageScreen>
   setImageLink(dynamic link)
   {
     imgLink = link;
+    Fluttertoast.showToast(msg: 'Click on image to Zoom in or Zoom out.',
+    toastLength: Toast.LENGTH_LONG,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 3,
+    backgroundColor: Colors.amberAccent,
+    textColor: Colors.black,
+  );
   }
 
   @override
@@ -27,6 +35,7 @@ class _SoloImageScreenState extends State<SoloImageScreen>
   {
     super.initState();
     setImageLink(widget.imgLink);
+    
   }
   
   @override
@@ -45,30 +54,36 @@ class _SoloImageScreenState extends State<SoloImageScreen>
                   fit: BoxFit.cover
                 ),
               ),
-              child: imgLink == null ? Center(
-                // heightFactor: 20,
-                child: Container(
-                  // margin: EdgeInsets.all(20),
-                  child:InkWell(
-                  onTap:()
-                  {
-                    print('Hello');
-                    StoreRedirect.redirect(
-                          androidAppId: "com.monday.monday",
-                          iOSAppId: "1290128888");
-                  },
-                  child: Container(
-                    width: 230,
-                    height: 230,
-                    decoration:BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/playstore2.png'),
-                        fit:BoxFit.contain
-                        )
+              child: imgLink == null ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height:80),
+                  Center(
+                    // heightFactor: 20,
+                    child: Container(
+                      // margin: EdgeInsets.all(20),
+                      child:InkWell(
+                      onTap:()
+                      {
+                        print('Hello');
+                        StoreRedirect.redirect(
+                              androidAppId: "com.monday.monday",
+                              iOSAppId: "1290128888");
+                      },
+                      child: Container(
+                        width: 230,
+                        height: 230,
+                        decoration:BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/playstore2.png'),
+                            fit:BoxFit.contain
+                            )
+                        ),
+                        ),
+                        ),
                     ),
-                    ),
-                    ),
-                ),
+                  ),
+                ],
               ):
               Container()
             ),

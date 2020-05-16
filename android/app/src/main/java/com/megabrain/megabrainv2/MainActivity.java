@@ -5,13 +5,15 @@ import io.flutter.plugins.GeneratedPluginRegistrant;
 import android.view.WindowManager.LayoutParams;
 import android.view.WindowManager; 
 import android.os.Bundle;
+import io.flutter.embedding.engine.FlutterEngine;
+import androidx.annotation.NonNull;
 
 public class MainActivity extends FlutterActivity 
 {
   @Override
-  protected void onCreate(Bundle savedInstanceState) 
+  public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) 
   {
-    super.onCreate(savedInstanceState);
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    GeneratedPluginRegistrant.registerWith(flutterEngine);
+    getWindow().addFlags(LayoutParams.FLAG_SECURE);
   }
 }

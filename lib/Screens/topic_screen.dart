@@ -129,9 +129,10 @@ class _TopicScreenState extends State<TopicScreen>
             ),
             backgroundColor: Colors.transparent,
             elevation: 0.0,
-            title: Text('$ss_name $area_name',
+            title: Text('$ss_name\n$area_name',
                 style: TextStyle(
                     fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold,
                     fontSize: 18.0,
                     color: Colors.white)),
             centerTitle: true,
@@ -204,7 +205,7 @@ class _TopicScreenState extends State<TopicScreen>
                         );
                       }, separatorBuilder: (BuildContext context, int index) 
                       {
-                          return Divider(thickness: 0,color:Colors.grey[500]);
+                          return Divider(thickness: 0,height:0,color:Colors.grey[500]);
                       }, 
                       ),
                     ),

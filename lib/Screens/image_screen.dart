@@ -129,13 +129,13 @@ class _ImageScreenState extends State<ImageScreen>
       loadLargeImages();
 
 //      Fluttertoast.showToast(msg: 'Remember: Long Tap to Save/Delete Images', toastLength: Toast.LENGTH_LONG);
-      // Fluttertoast.showToast(msg: 'Pressione a imagem para LEMBRAR ou ESQUECER',
-      //   toastLength: Toast.LENGTH_LONG,
-      //   gravity: ToastGravity.CENTER,
-      //   timeInSecForIosWeb: 3,
-      //   backgroundColor: Colors.amberAccent,
-      //   textColor: Colors.black,
-      // );
+      Fluttertoast.showToast(msg: 'Click on image to view the image in full screen',
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Colors.amberAccent,
+        textColor: Colors.black,
+      );
 
 
     }
@@ -184,13 +184,19 @@ class _ImageScreenState extends State<ImageScreen>
             ),
             backgroundColor: Colors.transparent,
             elevation: 0.0,
-            title: Text('$ssName $areaName $topicName',
-            maxLines: 2,
-            softWrap: true,
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 16.0,
-                    color: Colors.white)),
+            title: Padding(
+              padding: const EdgeInsets.symmetric(vertical:16.0),
+              child: Text('$ssName\n$areaName\n$topicName',
+              maxLines: 3,
+              softWrap: true,
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13.0,
+                      color: Colors.white
+                      ),
+                      ),
+            ),
             centerTitle: true,
           ),
         body: Column(

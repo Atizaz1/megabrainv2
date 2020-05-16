@@ -89,7 +89,7 @@ class _SubjectScreenState extends State<SubjectScreen>
       borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
       child: Container(
-          height: 200,
+          height: MediaQuery.of(context).size.height > 700 ? 200 : 100,
           width: width,
           decoration: BoxDecoration(
             color: LightColor.purple,
@@ -201,7 +201,7 @@ class _SubjectScreenState extends State<SubjectScreen>
           mainAxisSize: MainAxisSize.min,
           children:<Widget>[
             _header(context),
-            SizedBox(height: 30),
+            SizedBox(height: MediaQuery.of(context).size.height > 700 ? 30 : 15),
             // _categoryRow("Featured Courses", LightColor.orange, LightColor.orange),
             Expanded(
             child: _isLoading ? 
@@ -227,13 +227,14 @@ class _SubjectScreenState extends State<SubjectScreen>
                             subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.png' : 
                             subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' ,)
                         ));
+                        print(MediaQuery.of(context).size.height);
                       },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children:<Widget>
                       [ Container(
                         padding: EdgeInsets.all(20),
-                        height: 150,
+                        height: MediaQuery.of(context).size.height > 700 ? 150 : 75,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
@@ -260,13 +261,13 @@ class _SubjectScreenState extends State<SubjectScreen>
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical:40, horizontal: 20),
+              margin: MediaQuery.of(context).size.height > 700 ? EdgeInsets.symmetric(vertical:40, horizontal: 20) : EdgeInsets.symmetric(vertical:20, horizontal: 10),
               decoration: BoxDecoration(
               color:LightColor.purple,
               borderRadius: BorderRadius.circular(16)
               ),
               width:MediaQuery.of(context).size.width,
-              height:50,
+              height:MediaQuery.of(context).size.height > 700 ? 50 : 25,
               child:InkWell(
                 onTap: ()
                 {

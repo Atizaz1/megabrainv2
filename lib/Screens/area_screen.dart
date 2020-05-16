@@ -161,6 +161,7 @@ backgroundColor: LightColor.purple,
             title: Text('$ss_name',
                 style: TextStyle(
                     fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold,
                     fontSize: 18.0,
                     color: Colors.white)),
             centerTitle: true,
@@ -235,7 +236,7 @@ backgroundColor: LightColor.purple,
                         );
                       }, separatorBuilder: (BuildContext context, int index) 
                       {
-                          return Divider(thickness: 0,color:Colors.grey[500]);
+                          return Divider(thickness: 0,height:0,color:Colors.grey[500]);
                       }, 
                       ),
                     ),
