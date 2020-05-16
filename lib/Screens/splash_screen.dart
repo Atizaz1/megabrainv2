@@ -45,57 +45,59 @@ class SplashState extends State<SplashScreen>
   }
 
   initScreen(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Image.asset("assets/images/applogo2.png", scale: 2.5),
-            ),
-            Padding(padding: EdgeInsets.only(top: 20.0)),
-            Text(
-              "megaBrain ENEM",
-              style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.white
+    return SafeArea(
+          child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Image.asset("assets/images/applogo.png", scale: 2.5),
               ),
-            ),
+              Padding(padding: EdgeInsets.only(top: 20.0)),
+              Text(
+                "megaBrain ENEM",
+                style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.white
+                ),
+              ),
 
-            Text(
-              " ",
-              style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.white
+              Text(
+                " ",
+                style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.white
+                ),
               ),
-            ),
 
-            Center( child: Text(
-              'BIOLOGIA      |   FÍSICA',
-              style: TextStyle(
-                fontSize: 20.0,
-                color: LightColor.purple,
+              Center( child: Text(
+                'BIOLOGIA      |   FÍSICA',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: LightColor.purple,
+                ),
               ),
-            ),
-            ),
-            Text(
-              'MATEMÁTICA   |   QUÍMICA',
-              style: TextStyle(
-                fontSize: 20.0,
-                color: LightColor.purple,
               ),
-            ),
+              Text(
+                'MATEMÁTICA   |   QUÍMICA',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: LightColor.purple,
+                ),
+              ),
 
-            Padding(padding: EdgeInsets.only(top: 20.0)),
+              Padding(padding: EdgeInsets.only(top: 20.0)),
 //            CircularProgressIndicator(
 //              backgroundColor: Colors.white,
 //              strokeWidth: 1,
 //           ),
-            Container(
-              child: Image.asset("assets/images/loading.gif", scale: 3),
-            ),
-         ],
-       ),
+              Container(
+                child: Image.asset("assets/images/loading.gif", scale: 3),
+              ),
+           ],
+         ),
+        ),
       ),
     );
   }

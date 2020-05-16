@@ -58,8 +58,8 @@ class _SoloImageScreenState extends State<SoloImageScreen>
                           iOSAppId: "1290128888");
                   },
                   child: Container(
-                    width: 130,
-                    height: 130,
+                    width: 230,
+                    height: 230,
                     decoration:BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/playstore2.png'),

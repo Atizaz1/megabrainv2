@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:megabrainv2/Screens/news_screen.dart';
 import 'package:megabrainv2/Screens/splash_screen.dart';
 import 'package:megabrainv2/Screens/subject_screen.dart';
 
@@ -8,7 +10,10 @@ import 'Screens/topic_screen.dart';
 
 void main() 
 {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp,DeviceOrientation.portraitDown])
+      .then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget 
@@ -30,6 +35,7 @@ class MyApp extends StatelessWidget
         'area_screen'    : (context) => new AreaScreen(),
         'topic_screen'   : (context) => new TopicScreen(),
         'image_screen'   : (context) => new ImageScreen(),
+        'news_screen'    : (context) => new NewsScreen()
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:megabrainv2/Screens/area_screen.dart';
+import 'package:megabrainv2/Screens/news_screen.dart';
 import 'package:megabrainv2/constants/constants.dart';
 import 'package:megabrainv2/constants/light_color.dart';
 import 'package:megabrainv2/models/Subject.dart';
@@ -193,69 +194,99 @@ class _SubjectScreenState extends State<SubjectScreen>
   @override
   Widget build(BuildContext context) 
   {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children:<Widget>[
-          _header(context),
-          SizedBox(height: 30),
-          _categoryRow("Featured Courses", LightColor.orange, LightColor.orange),
-          Expanded(
-          child: _isLoading ? 
-          Center(child:CircularProgressIndicator()) 
-          : 
-          (subjectList == null || subjectList.length == 0) ? 
-          Center(child:Text('No Subject Areas Found', style: TextStyle(color: Colors.black),))
-          :
-          StaggeredGridView.countBuilder(
-            itemCount: (subjectList == null || subjectList.length == 0) ? 0 : subjectList.length,
-            padding: EdgeInsets.all(10),
-              crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              itemBuilder: (context, index) 
-              {
-                return InkWell(
-                  onTap: () async
-                    {
-                      Navigator.of(context).push(PageTransition(type: PageTransitionType.scale,alignment: Alignment.center,child:
-                        AreaScreen(subjectCode: subjectList[index].ssCode.toString(), subjectName: subjectList[index].ssName,heroTag: subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol.jpg' : 
-                          subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics.jpg': 
-                          subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.jpg' : 
-                          subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.jpg' : 'assets/images/course_generic.png' ,)
-                      ));
-                    },
-                  child: Column(
-                    children:<Widget>
-                    [ Container(
-                      padding: EdgeInsets.all(20),
-                      height: 180,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
-                          image: AssetImage(
-                            subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol.jpg' : 
-                            subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics.jpg': 
-                            subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.jpg' : 
-                            subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.jpg' : 'assets/images/course_generic.png' , 
+    return SafeArea(
+          child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children:<Widget>[
+            _header(context),
+            SizedBox(height: 30),
+            // _categoryRow("Featured Courses", LightColor.orange, LightColor.orange),
+            Expanded(
+            child: _isLoading ? 
+            Center(child:CircularProgressIndicator()) 
+            : 
+            (subjectList == null || subjectList.length == 0) ? 
+            Center(child:Text('No Subject Areas Found', style: TextStyle(color: Colors.black),))
+            :
+            StaggeredGridView.countBuilder(
+              itemCount: (subjectList == null || subjectList.length == 0) ? 0 : subjectList.length,
+              padding: EdgeInsets.all(10),
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                itemBuilder: (context, index) 
+                {
+                  return InkWell(
+                    onTap: () async
+                      {
+                        Navigator.of(context).push(PageTransition(type: PageTransitionType.scale,alignment: Alignment.center,child:
+                          AreaScreen(subjectCode: subjectList[index].ssCode.toString(), subjectName: subjectList[index].ssName,heroTag: subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol.png' : 
+                            subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics.png': 
+                            subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.png' : 
+                            subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' ,)
+                        ));
+                      },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children:<Widget>
+                      [ Container(
+                        padding: EdgeInsets.all(20),
+                        height: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          image: DecorationImage(
+                            image: AssetImage(
+                              subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol.png' : 
+                              subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics.png': 
+                              subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.png' : 
+                              subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' , 
+                            ),
+                            // alignment: Alignment.topCenter
+                            fit: BoxFit.cover
                           ),
-                          // alignment: Alignment.topCenter
-                          fit: BoxFit.cover
                         ),
                       ),
-                    ),
-                    Text(
-                      subjectList[index].ssName,
-                      style: kTitleTextStyle,
-                    )
-                    ]
-                  ),               
-                );
-              },
-              staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+                      Text(
+                        subjectList[index].ssName,
+                        style: kTitleTextStyle,
+                      )
+                      ]
+                    ),               
+                  );
+                },
+                staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+              ),
             ),
-          )
-        ]
+            Container(
+              margin: EdgeInsets.symmetric(vertical:40, horizontal: 20),
+              decoration: BoxDecoration(
+              color:LightColor.purple,
+              borderRadius: BorderRadius.circular(16)
+              ),
+              width:MediaQuery.of(context).size.width,
+              height:50,
+              child:InkWell(
+                onTap: ()
+                {
+                  print('hello');
+                  Navigator.of(context).push(PageTransition(type: PageTransitionType.fade,alignment: Alignment.center,child:NewsScreen()
+                  )
+                  );
+                },
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children:<Widget>
+                  [
+                    Image.asset('assets/images/news.png'),
+                    Text('News',style:kTitleTextStyle.copyWith(color:Colors.white)),
+                  ]
+                )
+              )
+            )
+          ]
+        ),
       ),
     );
   }

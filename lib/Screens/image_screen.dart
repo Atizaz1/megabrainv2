@@ -171,101 +171,105 @@ class _ImageScreenState extends State<ImageScreen>
   @override
   Widget build(BuildContext context) 
   {
-    return Scaffold(
-      backgroundColor: LightColor.purple,
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(Icons.arrow_back_ios),
-            color: Colors.white,
+    return SafeArea(
+          child: Scaffold(
+        backgroundColor: LightColor.purple,
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(Icons.arrow_back_ios),
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            title: Text('$ssName $areaName $topicName',
+            maxLines: 2,
+            softWrap: true,
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16.0,
+                    color: Colors.white)),
+            centerTitle: true,
           ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          title: Text('$ssName Images',
-              style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 18.0,
-                  color: Colors.white)),
-          centerTitle: true,
-        ),
-      body: Column(
-                children:<Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                height: MediaQuery.of(context).size.height - 82.0,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent),
-            Positioned(
-                top: 75.0,
-                child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(45.0),
-                          // topRight: Radius.circular(45.0),
-                        ),
-                        color: Colors.white),
-                    height: MediaQuery.of(context).size.height - 100.0,
-                    width: MediaQuery.of(context).size.width)),
-                    Positioned(
-                top: 100.0,
-                left: 25.0,
-                right: 25.0,
-                child: Container(
-                  height:MediaQuery.of(context).size.height * .7,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                      child: Container(  
+        body: Column(
+                  children:<Widget>[
+                    Stack(
+                      children: <Widget>[
+                        Container(
+                  height: MediaQuery.of(context).size.height - 82.0,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.transparent),
+              Positioned(
+                  top: 30.0,
+                  child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(45.0),
+                            // topRight: Radius.circular(45.0),
+                          ),
+                          color: Colors.white),
+                      height: MediaQuery.of(context).size.height - 100.0,
+                      width: MediaQuery.of(context).size.width)),
+                      Positioned(
+                  top: 60.0,
+                  left: 25.0,
+                  right: 25.0,
+                  child: Container(
+                    height:MediaQuery.of(context).size.height * .7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                        child: Container(  
 //                child: (imagesLinkList == null || imagesLinkList.length == 0) ? Center(child:Text('No Images Here', style: TextStyle(color: Colors.black),)) :
-                    child:_isLoading ? Center(child: CircularProgressIndicator(
-                    )): (imagesLinkList == null || imagesLinkList.length == 0) ? Center(child:Text('Nenhuma imagem!', style: TextStyle(color: Colors.black),)) :
-                    GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate:
-                    SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16.0,
-                    childAspectRatio: 0.6,
-                    ),
-                    itemCount: (imagesLinkList == null || imagesLinkList.length == 0) ? 0 : imagesLinkList.length,
-                    itemBuilder: (context, index) 
-                    {
-                        return InkWell(
-                          onTap: () 
-                          {
-                            // loadLargeImages();
-                            Navigator.push(context, 
-                            PageTransition(type: PageTransitionType.scale,alignment: Alignment.center, child: SoloImageScreen(imgLink: imagesLinkList[index].openImage == '1' ? linkPrefix+imagesLinkList[index].imageName:null))
-                            );
-                          },
-                          child: CachedNetworkImage(
-                            progressIndicatorBuilder: (context, url, downloadProgress) => 
-                            Center(child:CircularProgressIndicator(value: downloadProgress.progress)),
-                              imageUrl: linkPrefix+imagesLinkList[index].imageName,
-                              placeholder: (context, url)        => Center(child:CircularProgressIndicator()),
-                              errorWidget: (context, url, error) => Icon(Icons.error),
-                          )
-                        );
-                    },
+                      child:_isLoading ? Center(child: CircularProgressIndicator(
+                      )): (imagesLinkList == null || imagesLinkList.length == 0) ? Center(child:Text('Nenhuma imagem!', style: TextStyle(color: Colors.black),)) :
+                      GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16.0,
+                      childAspectRatio: 0.6,
                       ),
+                      itemCount: (imagesLinkList == null || imagesLinkList.length == 0) ? 0 : imagesLinkList.length,
+                      itemBuilder: (context, index) 
+                      {
+                          return InkWell(
+                            onTap: () 
+                            {
+                              // loadLargeImages();
+                              Navigator.push(context, 
+                              PageTransition(type: PageTransitionType.leftToRightWithFade,alignment: Alignment.center, child: SoloImageScreen(imgLink: imagesLinkList[index].openImage == '1' ? linkPrefix+imagesLinkList[index].imageName:null))
+                              );
+                            },
+                            child: CachedNetworkImage(
+                              progressIndicatorBuilder: (context, url, downloadProgress) => 
+                              Center(child:CircularProgressIndicator(value: downloadProgress.progress)),
+                                imageUrl: linkPrefix+imagesLinkList[index].imageName,
+                                placeholder: (context, url)        => Center(child:CircularProgressIndicator()),
+                                errorWidget: (context, url, error) => Icon(Icons.error),
+                            )
+                          );
+                      },
+                        ),
+                      ),
+                      ),
+
+                      ],
                     ),
+
+                  ),
                     ),
 
-                    ],
-                  ),
+                   ],
+                  )  
 
-                ),
-                  ),
-
-                 ],
-                )  
-
-                ]
-                )
+                  ]
+                  )
+      ),
     );
   }
 }

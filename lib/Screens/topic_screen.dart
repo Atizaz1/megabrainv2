@@ -116,106 +116,108 @@ class _TopicScreenState extends State<TopicScreen>
   @override
   Widget build(BuildContext context) 
   {
-    return Scaffold(
-      backgroundColor: LightColor.purple,
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(Icons.arrow_back_ios),
-            color: Colors.white,
+    return SafeArea(
+          child: Scaffold(
+        backgroundColor: LightColor.purple,
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(Icons.arrow_back_ios),
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            title: Text('$ss_name $area_name',
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 18.0,
+                    color: Colors.white)),
+            centerTitle: true,
           ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          title: Text('$ss_name Topics',
-              style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 18.0,
-                  color: Colors.white)),
-          centerTitle: true,
-        ),
-        body:Column(children: [
-          Stack(children: [
-            Container(
-                height: MediaQuery.of(context).size.height - 82.0,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent),
-            Positioned(
-                top: 75.0,
-                child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          // topLeft: Radius.circular(45.0),
-                          topRight: Radius.circular(45.0),
-                        ),
-                        color: Colors.white),
-                    height: MediaQuery.of(context).size.height - 100.0,
-                    width: MediaQuery.of(context).size.width)),
-                    Positioned(
-                top: 30.0,
-                left: (MediaQuery.of(context).size.width / 2) - 100.0,
-                child: Hero(
-                tag: widget.heroTag,
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
-                            image: AssetImage(widget.heroTag),
-                            fit: BoxFit.cover)),
-                    height: 190.0,
-                    width: 190.0))),
-                Positioned(
-                top: 250.0,
-                left: 25.0,
-                right: 25.0,
-                child: Container(
-                  height:MediaQuery.of(context).size.height * .5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                    Expanded(
-                    child: Container(
-                    child: _isLoading ? Center(child: CircularProgressIndicator(
-                    ))
-                 :(topicList == null || topicList.length == 0) ? Center(child:Text('No Subject Area Topics Found', style: TextStyle(color: Colors.black),))
-                    :ListView.separated(
-                    itemCount: (topicList == null || topicList.length == 0) ? 0 : topicList.length,
-                    itemBuilder: (context, index) 
-                    {
-                      return InkWell(
-                        onTap: () 
-                        {
-                          Navigator.of(context).push(PageTransition(type: PageTransitionType.size, alignment: Alignment.center, child: ImageScreen(subjectCode: ss_code, subjectName: ss_name,areaCode: area_code,areaName: area_name, topiCode: topicList[index].topicCode.toString(),topicName: topicList[index].topicName)
-                          ));
-                        },
-                        child: ListTile(
-                        title: Text(
-                          topicList[index].topicName,
-                          style: TextStyle(
-                            color: int.parse(topicList[index].openTopic) == 0 ? Colors.grey : Colors.black
+          body:Column(children: [
+            Stack(children: [
+              Container(
+                  height: MediaQuery.of(context).size.height - 82.0,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.transparent),
+              Positioned(
+                  top: 75.0,
+                  child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            // topLeft: Radius.circular(45.0),
+                            topRight: Radius.circular(45.0),
                           ),
-                        ),
-                        trailing: Icon(Icons.keyboard_arrow_right,
-                        color:Colors.black
-                        ),
+                          color: Colors.white),
+                      height: MediaQuery.of(context).size.height - 100.0,
+                      width: MediaQuery.of(context).size.width)),
+                      Positioned(
+                  top: 0.0,
+                  left: (MediaQuery.of(context).size.width / 2) - 100.0,
+                  child: Hero(
+                  tag: widget.heroTag,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                          image: DecorationImage(
+                              image: AssetImage(widget.heroTag),
+                              fit: BoxFit.cover)),
+                      height: 200.0,
+                      width: 200.0))),
+                  Positioned(
+                  top: 220.0,
+                  left: 25.0,
+                  right: 25.0,
+                  child: Container(
+                    height:MediaQuery.of(context).size.height * .5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                      Expanded(
+                      child: Container(
+                      child: _isLoading ? Center(child: CircularProgressIndicator(
+                      ))
+                   :(topicList == null || topicList.length == 0) ? Center(child:Text('No Subject Area Topics Found', style: TextStyle(color: Colors.black),))
+                      :ListView.separated(
+                      itemCount: (topicList == null || topicList.length == 0) ? 0 : topicList.length,
+                      itemBuilder: (context, index) 
+                      {
+                        return InkWell(
+                          onTap: () 
+                          {
+                            Navigator.of(context).push(PageTransition(type: PageTransitionType.size, alignment: Alignment.center, child: ImageScreen(subjectCode: ss_code, subjectName: ss_name,areaCode: area_code,areaName: area_name, topiCode: topicList[index].topicCode.toString(),topicName: topicList[index].topicName)
+                            ));
+                          },
+                          child: ListTile(
+                          title: Text(
+                            topicList[index].topicName,
+                            style: TextStyle(
+                              color: int.parse(topicList[index].openTopic) == 0 ? Colors.grey : Colors.black
+                            ),
                           ),
-                      );
-                    }, separatorBuilder: (BuildContext context, int index) 
-                    {
-                        return Divider(thickness: 0,color:Colors.grey[500]);
-                    }, 
+                          trailing: Icon(Icons.keyboard_arrow_right,
+                          color:Colors.black
+                          ),
+                            ),
+                        );
+                      }, separatorBuilder: (BuildContext context, int index) 
+                      {
+                          return Divider(thickness: 0,color:Colors.grey[500]);
+                      }, 
+                      ),
+                    ),
+              ),
+                      ]
                     ),
                   ),
-            ),
+                                ),
                     ]
-                  ),
-                ),
-                              ),
+            ),
                   ]
-          ),
-                ]
-                )
+                  )
+      ),
     );
   }
 }
