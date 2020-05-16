@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:store_redirect/store_redirect.dart';
@@ -18,8 +19,9 @@ class _SoloImageScreenState extends State<SoloImageScreen>
 {
   String imgLink;
 
-  setImageLink(dynamic link)
+  setImageLink(dynamic link) async
   {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     imgLink = link;
     Fluttertoast.showToast(msg: 'Click on image to Zoom in or Zoom out.',
     toastLength: Toast.LENGTH_LONG,

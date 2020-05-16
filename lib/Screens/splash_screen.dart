@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:megabrainv2/Screens/subject_screen.dart';
 import 'package:megabrainv2/constants/light_color.dart';
 import 'package:page_transition/page_transition.dart';
@@ -18,6 +19,7 @@ class SplashState extends State<SplashScreen>
 
   startTime() async 
   {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     var duration = new Duration(seconds: 8);
     return new Timer(duration, route);
   }

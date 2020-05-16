@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:megabrainv2/constants/light_color.dart';
 import 'package:megabrainv2/models/Topic.dart';
 import 'dart:convert' as convert;
@@ -75,6 +76,7 @@ class _TopicScreenState extends State<TopicScreen>
 
   fetchTopicList() async 
   {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     setState(() 
     {
       _isLoading = true;

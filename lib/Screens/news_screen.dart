@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -44,6 +45,7 @@ class _NewsScreenState extends State<NewsScreen>
 
   fetchNewsList() async 
   {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     setState(() 
     {
       _isLoading = true;

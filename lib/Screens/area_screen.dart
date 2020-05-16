@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:megabrainv2/Screens/topic_screen.dart';
 import 'package:megabrainv2/constants/light_color.dart';
 import 'package:megabrainv2/models/Area.dart';
@@ -61,6 +62,7 @@ class _AreaScreenState extends State<AreaScreen>
 
   fetchAreaList() async 
   {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     setState(() 
     {
       _isLoading = true;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:megabrainv2/Screens/area_screen.dart';
 import 'package:megabrainv2/Screens/news_screen.dart';
 import 'package:megabrainv2/constants/constants.dart';
@@ -37,6 +38,7 @@ class _SubjectScreenState extends State<SubjectScreen>
 
   fetchSubjectList() async 
   {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
     setState(() 
     {
       _isLoading = true;
