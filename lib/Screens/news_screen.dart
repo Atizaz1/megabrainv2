@@ -21,7 +21,7 @@ class _NewsScreenState extends State<NewsScreen>
     fetchNewsList();
   }
   
-  List<News> newsList;
+  List<News> newsList = new List<News>();
 
   bool _isLoading = false;
 

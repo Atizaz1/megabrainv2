@@ -229,7 +229,8 @@ class _SubjectScreenState extends State<SubjectScreen>
                             subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.png' : 
                             subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' ,)
                         ));
-                        print(MediaQuery.of(context).size.height);
+                        print('Height: '+MediaQuery.of(context).size.height.toString());
+                        print('Width: '+MediaQuery.of(context).size.width.toString());
                       },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
