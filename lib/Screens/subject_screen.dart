@@ -237,18 +237,18 @@ class _SubjectScreenState extends State<SubjectScreen>
                       children:<Widget>
                       [ Container(
                         padding: EdgeInsets.all(20),
-                        height: MediaQuery.of(context).size.height > 700 || MediaQuery.of(context).size.height > 640 ? 135 : 115,
+                        height: MediaQuery.of(context).size.height > 700  || MediaQuery.of(context).size.height > 640 ? 125 : 105,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
+                          // borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
                             image: AssetImage(
-                              subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol.png' : 
-                              subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics.png': 
-                              subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.png' : 
-                              subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' , 
+                              subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol2.png' : 
+                              subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics2.png': 
+                              subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math2.png' : 
+                              subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem2.png' : 'assets/images/course_generic.png' , 
                             ),
                             // alignment: Alignment.topCenter
-                            fit: BoxFit.fill
+                            fit: BoxFit.contain
                           ),
                         ),
                       ),
