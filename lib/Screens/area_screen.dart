@@ -192,14 +192,14 @@ backgroundColor: LightColor.purple,
                   tag: widget.heroTag,
                   child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
+                        // borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
                               image: AssetImage(widget.heroTag),
-                              fit: BoxFit.cover)),
-                      height: 200.0,
+                              fit: BoxFit.contain)),
+                      height: MediaQuery.of(context).size.height > 700  || MediaQuery.of(context).size.height > 640 ? 125 : 105,
                       width: 200.0))),
               Positioned(
-                  top: 220.0,
+                  top: 190.0,
                   left: 25.0,
                   right: 25.0,
                   child: Container(

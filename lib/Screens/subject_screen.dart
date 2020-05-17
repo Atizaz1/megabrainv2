@@ -224,10 +224,10 @@ class _SubjectScreenState extends State<SubjectScreen>
                     onTap: () async
                       {
                         Navigator.of(context).push(PageTransition(type: PageTransitionType.scale,alignment: Alignment.center,child:
-                          AreaScreen(subjectCode: subjectList[index].ssCode.toString(), subjectName: subjectList[index].ssName,heroTag: subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol.png' : 
-                            subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics.png': 
-                            subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math.png' : 
-                            subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem.png' : 'assets/images/course_generic.png' ,)
+                          AreaScreen(subjectCode: subjectList[index].ssCode.toString(), subjectName: subjectList[index].ssName,heroTag: subjectList[index].ssName == 'BIOLOGIA' ? 'assets/images/biol2.png' : 
+                            subjectList[index].ssName == 'FÍSICA' ? 'assets/images/physics2.png': 
+                            subjectList[index].ssName == 'MATEMÁTICA' ? 'assets/images/math2.png' : 
+                            subjectList[index].ssName == 'QUÍMICA' ? 'assets/images/chem2.png' : 'assets/images/course_generic.png' ,)
                         ));
                         print('Height: '+MediaQuery.of(context).size.height.toString());
                         print('Width: '+MediaQuery.of(context).size.width.toString());
