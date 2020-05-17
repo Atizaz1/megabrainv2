@@ -22,13 +22,13 @@ class _SoloImageScreenState extends State<SoloImageScreen>
   setImageLink(dynamic link)
   {
     imgLink = link;
-    Fluttertoast.showToast(msg: 'Click on image to Zoom in or Zoom out.',
+    imgLink != null ? Fluttertoast.showToast(msg: 'Click on image to Zoom in or Zoom out.',
     toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 3,
     backgroundColor: Colors.amberAccent,
     textColor: Colors.black,
-  );
+    ):null;
   }
 
   @override
