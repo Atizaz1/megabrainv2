@@ -199,11 +199,11 @@ backgroundColor: LightColor.purple,
                       height: MediaQuery.of(context).size.height > 700  || MediaQuery.of(context).size.height > 640 ? 125 : 105,
                       width: 200.0))),
               Positioned(
-                  top: 190.0,
+                  top: 160.0,
                   left: 25.0,
                   right: 25.0,
                   child: Container(
-                    height:MediaQuery.of(context).size.height * .5,
+                    height:MediaQuery.of(context).size.height * .6,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
